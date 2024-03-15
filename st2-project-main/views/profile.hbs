@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{> navbar}}
+    <div>
+        <h1>profile</h1>
+        <p>username : {{user.Username}}</p>
+        <p>Admin : {{user.Admin}}</p>
+        <form action="/logout" method="post">
+        <button type="submit">logout</button>
+        </form>
+    </div>
+    {{#each blogs}}
+    <hr>
+    <div style="width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+">
+        <h4 style="color: white;">{{this.title}}</h4>
+        <img style="width: 500px;heigth:500px;" src={{this.imgUrl}} alt={{title}}>
+        <p>{{caption}}</p>
+        <p>Approved: {{is_verify}}</p>
+    </div>
+    <hr>
+    {{/each}}
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sasta Reddit</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    {{>navbar}}
+    <h1 style="text-align: center;">Welcome to Our Website</h1>
+    {{#each blogs}}
+    <div style="width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+">
+        <h4 style="color: white;">{{this.title}}</h4>
+        <img style="width: 500px;heigth:500px;" src={{this.imgUrl}} alt={{title}}>
+        <p>{{caption}}</p>
+        <div style="display: flex;flex-direction:row; justify-content: space-between;">
+            <a href="/updateblog/{{this.id}}">
+            <button>Update</button>
+            </a>
+            <a href="/deleteblog/{{this.id}}">
+                <button>delete</button>
+            </a>
+            <label for="Status">Status: </label>
+            <select name="is_verify" id="Status" onchange="updateStatus('{{this.id}}', this.value)">
+                <option value="false" {{#ifEquals is_verify false }}selected{{/ifEquals}}>False</option>
+                <option value="true"  {{#ifEquals is_verify true }}selected{{/ifEquals}}>True</option>
+            </select>
+        </div>
+    </div>
+    {{/each}}
+
+    <script>
+        function updateStatus(blogId, status) {
+            fetch(`/admin/${blogId}?is_verify=${status}`, {
+                method: 'POST',
+            })
+        }
+    </script>
+</body>
+
+</html>

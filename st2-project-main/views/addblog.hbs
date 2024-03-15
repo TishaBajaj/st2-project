@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Blog</title>
+    <link rel="stylesheet" href="css/addblog.css">
+</head>
+<body>
+    {{>navbar}}
+    <h1 style="text-align: center;">Welcome to Add Blog Page</h1>
+    <form action="/addblog" method="POST" style="margin-left: auto;margin-right:auto;">
+        <label for="imgUrl">imgUrl</label>
+        <input type="text" id="imgUrl" name="imgUrl">
+        <label for="title">title</label>
+        <input type="text" id="title" name="title">
+        <label for="caption">caption</label>
+        <input type="text" id="caption" name="caption">
+        <label for="category">category</label>
+        <select name="category" id="category">
+            <option value="sports">Sports</option>
+            <option value="business">Business</option>
+            <option value="educational">Educational</option>
+            <option value="current affairs">Current Affairs</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <script src="js/AddBlog.js"></script>
+</body>
+</html>
